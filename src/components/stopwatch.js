@@ -12,6 +12,7 @@ class Stopwatch extends Component {
     this.start = this.start.bind(this);
     this.stop = this.stop.bind(this);
     this.update = this.update.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   start() {
@@ -28,6 +29,14 @@ class Stopwatch extends Component {
       status: "stopped"
     });
     console.log("status: stopped");    
+  }
+
+  reset() {
+    this.setState({
+      status: "stopped",
+      start: null,
+      elapsed: 0
+    })
   }
 
   update() {
@@ -50,6 +59,7 @@ class Stopwatch extends Component {
         <p>{status}</p>
         <button onClick={this.start}>Start</button>
         <button onClick={this.stop}>Stop</button>
+        <button onClick={this.reset}>Reset</button>        
       </div>
     );
   }
